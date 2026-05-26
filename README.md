@@ -15,11 +15,14 @@ Amber provides a reusable, YAML-driven widget system for building data-editing i
 
 In short, Amber is the wider abstraction that sits below October's backend module; the part that knows how to turn a `fields.yaml` into a working form, or a set of `columns.yaml` into a sortable list.
 
+Each widget implements the [Larajax](https://larajax.org/guide/defining-components.html) `ViewComponentInterface`, so AJAX handlers (uploads, validation, partial updates, etc.) are wired in automatically the same way as any other Larajax view component. A widget rendered by Amber behaves like a first-class Larajax component on the page.
+
 ## Requirements
 
 - PHP 8.2 or higher
 - Laravel 12
 - [october/rain](https://github.com/octobercms/library) (used for the underlying database, validation, and HTML helpers)
+- [larajax/larajax](https://larajax.org) (provides the View Component interface widgets implement)
 
 ## Installation
 
