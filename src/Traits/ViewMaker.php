@@ -221,11 +221,6 @@ trait ViewMaker
      */
     public function guessViewPathFrom($class, $suffix = '', $isPublic = false)
     {
-        // Pass to the controller to share the cache
-        if (isset($this->controller)) {
-            return $this->controller->guessViewPathFrom($class, $suffix, $isPublic);
-        }
-
         if (is_object($class)) {
             $class = get_class($class);
         }
