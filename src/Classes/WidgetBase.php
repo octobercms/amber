@@ -16,7 +16,6 @@ abstract class WidgetBase extends Extendable implements ViewComponentInterface
     use \October\Amber\Traits\SessionMaker;
     use \October\Amber\Traits\ConfigMaker;
     use \October\Amber\Traits\WidgetMaker;
-    use \October\Amber\Traits\AssetMaker;
     use \October\Amber\Traits\ErrorMaker;
     use \October\Amber\Traits\ViewMaker;
     use \Larajax\Traits\ViewComponent;
@@ -40,10 +39,6 @@ abstract class WidgetBase extends Extendable implements ViewComponentInterface
     {
         $this->config = $this->makeConfig($this->config);
         $this->viewPath = $this->configPath = $this->guessViewPath('/partials');
-        $this->assetPath = File::localToPublic($this->guessViewPath('/assets'));
-
-        // Prepare assets used by this widget
-        $this->loadAssets();
 
         // Boot extensions
         $this->extendableConstruct();
@@ -67,15 +62,6 @@ abstract class WidgetBase extends Extendable implements ViewComponentInterface
      * @return string HTML markup supplied by this widget.
      */
     public function render()
-    {
-    }
-
-    /**
-     * loadAssets adds widget specific asset files. Use $this->addJs() and $this->addCss()
-     * to register new assets to include on the page.
-     * @return void
-     */
-    protected function loadAssets()
     {
     }
 

@@ -435,15 +435,6 @@ class FileUpload extends FormWidgetBase
     /**
      * @inheritDoc
      */
-    protected function loadAssets()
-    {
-        // $this->addCss('css/fileupload.css');
-        // $this->addJs('js/fileupload.js');
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getSaveValue($value)
     {
         return FormField::NO_SAVE_DATA;

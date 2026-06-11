@@ -142,16 +142,4 @@ trait HasQuickCreate
 
         return ['#' . $this->getId() => $this->makePartial('relation')];
     }
-
-    /**
-     * loadQuickCreateAssets loads the JS control for quick create
-     */
-    protected function loadQuickCreateAssets()
-    {
-        if (!$this->getConfig('quickCreate')) {
-            return;
-        }
-
-        $this->addJs('js/relation-quick-create.js', ['type' => 'module']);
-    }
 }

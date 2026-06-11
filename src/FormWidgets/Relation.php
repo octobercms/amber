@@ -115,14 +115,6 @@ class Relation extends FormWidgetBase
     /**
      * @inheritDoc
      */
-    protected function loadAssets()
-    {
-        $this->loadQuickCreateAssets();
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function render()
     {
         $this->prepareVars();
