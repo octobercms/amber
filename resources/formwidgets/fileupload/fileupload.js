@@ -11,14 +11,14 @@
  * - data-config-handler - AJAX handler for configuration popup
  *
  * JavaScript API:
- * oc.fetchControl(element, 'fileupload')
+ * jax.fetchControl(element, 'fileupload')
  *
  * Dependencies:
  * - Dropzone.js
  */
 'use strict';
 
-oc.registerControl('fileupload', class extends oc.ControlBase {
+jax.registerControl('fileupload', class extends jax.ControlBase {
     init() {
         this.$el = $(this.element);
         this.isLoaded = false;
@@ -362,7 +362,7 @@ oc.registerControl('fileupload', class extends oc.ControlBase {
     }
 
     onClickCheckbox(ev) {
-        oc.checkboxRangeRegisterClick(ev, '.upload-object', 'input[data-record-selector]');
+        jax.checkboxRangeRegisterClick(ev, '.upload-object', 'input[data-record-selector]');
     }
 
     /*
@@ -479,7 +479,7 @@ oc.registerControl('fileupload', class extends oc.ControlBase {
             $button = $(ev.target).closest('.toolbar-clear-file'),
             $currentObject = $('.upload-object:first', this.$filesContainer);
 
-        oc.confirm($button.attr('data-request-confirm'), function(isConfirm) {
+        jax.confirm($button.attr('data-request-confirm'), function(isConfirm) {
             if (!isConfirm) {
                 return;
             }
@@ -497,7 +497,7 @@ oc.registerControl('fileupload', class extends oc.ControlBase {
             $button = $(ev.target).closest('.toolbar-delete-selected'),
             $currentObjects = $('.upload-object:has(input[data-record-selector]:checked)', this.$filesContainer);
 
-        oc.confirm($button.attr('data-request-confirm'), function(isConfirm) {
+        jax.confirm($button.attr('data-request-confirm'), function(isConfirm) {
             if (!isConfirm) {
                 return;
             }

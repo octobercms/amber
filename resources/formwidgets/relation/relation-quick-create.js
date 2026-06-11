@@ -1,6 +1,4 @@
-import { ControlBase, registerControl } from 'larajax';
-
-registerControl('relation-quick-create', class extends ControlBase {
+jax.registerControl('relation-quick-create', class extends jax.ControlBase {
     init() {
         this.config = Object.assign({
             handlerLoad: null,

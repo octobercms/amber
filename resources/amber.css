@@ -1,0 +1,8 @@
+/*
+ * Amber — entry stylesheet
+ *
+ * Aggregates per-widget CSS via native @import. The consumer includes only
+ * this file; the browser fetches the imports on first paint.
+ */
+
+@import "./formwidgets/fileupload/fileupload.css";
