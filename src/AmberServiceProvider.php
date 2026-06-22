@@ -12,6 +12,9 @@ class AmberServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->scoped('system.widgets', \October\Amber\Classes\WidgetManager::class);
+
+        $this->app->singleton('files', \October\Rain\Filesystem\Filesystem::class);
+        $this->app->singleton('events', \October\Rain\Events\Dispatcher::class);
     }
 
     /**
