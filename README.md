@@ -32,6 +32,26 @@ composer require october/amber
 
 The package registers an `AmberServiceProvider` automatically via Laravel's package discovery.
 
+### Publishing assets
+
+Amber widgets ship a small CSS + JS bundle that the browser loads at runtime. Publish it once after installing (and again after upgrading):
+
+```bash
+php artisan vendor:publish --tag=amber-assets
+```
+
+Files are copied verbatim into `public/vendor/amber/`. There is no build step; the JS is plain ES modules and the CSS is plain CSS with `@import`.
+
+Include them in your layout, after the larajax framework bundle:
+
+```blade
+<link rel="stylesheet" href="{{ asset('vendor/amber/amber.css') }}">
+<script src="{{ asset('vendor/larajax/framework.js') }}"></script>
+<script type="module" src="{{ asset('vendor/amber/amber.js') }}"></script>
+```
+
+Larajax exposes the `window.jax` API that Amber widgets register their controls against, so it must load first.
+
 ## Usage
 
 Build a widget inline in your controller action with `Form::make(...)`, then pass it to the view:
