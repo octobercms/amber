@@ -104,15 +104,6 @@ class Relation extends FormWidgetBase
     }
 
     /**
-     * bindToController ensures manual relation controller configuration is applied.
-     */
-    public function bindToController()
-    {
-        $this->defineRelationControllerConfig();
-        parent::bindToController();
-    }
-
-    /**
      * @inheritDoc
      */
     public function render()
@@ -305,51 +296,6 @@ class Relation extends FormWidgetBase
         elseif (is_array($this->defaultSort) && isset($this->defaultSort['column'])) {
             $query->orderBy($this->defaultSort['column'], $this->defaultSort['direction'] ?? 'desc');
         }
-    }
-
-    /**
-     * defineRelationControllerConfig
-     */
-    protected function defineRelationControllerConfig()
-    {
-        if (!$this->useController || !$this->useControllerConfig) {
-            return;
-        }
-
-        if (!$this->controller->isClassExtendedWith(\Backend\Behaviors\RelationController::class)) {
-            $this->controller->extendClassWith(\Backend\Behaviors\RelationController::class);
-            $this->controller->asExtension('RelationController')->beforeDisplay();
-        }
-
-        $controllerConfig = $this->useControllerConfig;
-
-        if (!isset($controllerConfig['readOnly']) && $this->readOnly === true) {
-            $controllerConfig['readOnly'] = $this->readOnly;
-        }
-
-        if (!isset($controllerConfig['externalToolbarBus']) && isset($this->config->externalToolbarBus)) {
-            $controllerConfig['externalToolbarBus'] = $this->config->externalToolbarBus;
-        }
-
-        if (!isset($controllerConfig['sessionKey'])) {
-            $controllerConfig['sessionKey'] = $this->getParentForm()?->getSessionKeyWithSuffix();
-        }
-
-        $this->controller->relationRegisterField($this->getRelationControllerFieldName(), $controllerConfig);
-    }
-
-    /**
-     * getRelationControllerFieldName
-     */
-    protected function getRelationControllerFieldName()
-    {
-        $relationName = $this->valueFrom;
-
-        if ($parentFieldName = $this->getParentForm()?->parentFieldName) {
-            $relationName = $parentFieldName . '['.implode('][', HtmlHelper::nameToArray($relationName)).']';
-        }
-
-        return $relationName;
     }
 
     /**
