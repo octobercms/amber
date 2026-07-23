@@ -141,7 +141,7 @@ trait ConfigMaker
 
         $fileName = File::symbolizePath($fileName);
 
-        if (System::checkBaseDir($fileName)) {
+        if (File::checkBaseDir($fileName)) {
             return $fileName;
         }
 

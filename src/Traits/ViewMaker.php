@@ -141,7 +141,7 @@ trait ViewMaker
         if (strpos($fileName, '/') !== false) {
             foreach ($viewExtensions as $extension) {
                 $_fileName = $fileName . '.' . $extension;
-                if (System::checkBaseDir($_fileName)) {
+                if (File::checkBaseDir($_fileName)) {
                     return $_fileName;
                 }
             }
@@ -158,7 +158,7 @@ trait ViewMaker
      */
     public function makeFileContents($filePath, $extraParams = [])
     {
-        if (!strlen($filePath) || !File::isFile($filePath) || !System::checkBaseDir($filePath)) {
+        if (!strlen($filePath) || !File::isFile($filePath) || !File::checkBaseDir($filePath)) {
             return '';
         }
 
