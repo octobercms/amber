@@ -4,7 +4,7 @@
     "homepage": "https://github.com/larajax/ui",
     "require": {
         "php": "^8.2",
-        "october/rain": "dev-next as 4.4.0"
+        "october/rain": "^4.4"
     },
     "autoload": {
         "psr-4": {
